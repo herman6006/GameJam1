@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 public class Task1Controller : MonoBehaviour
 {
-    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos;
+    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode;
     [SerializeField] private Sprite[] loadingBarSprites;
+    [SerializeField] private TMP_Text displayCodeTxt;
     private bool canStart;
     private bool inArea;
     private bool lockedIn = false;
@@ -15,6 +17,8 @@ public class Task1Controller : MonoBehaviour
     private RectTransform yellowRectTransform;
     private Image loadBarImage;
     private int points = 0;
+    public string code;
+    private bool isFinished = false;
     private void Start()
     {
         loadBarImage = loadingBar.GetComponent<Image>();
@@ -33,10 +37,11 @@ public class Task1Controller : MonoBehaviour
             button.SetActive(false);
             loadingBar.SetActive(false);
             yellowBar.SetActive(false);
+            displayCode.SetActive(false);
             lockedIn = false;
             //Enable player movement
         }
-        else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn)
+        else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && !isFinished)
         {
             taskBackground.SetActive(true);
             button.SetActive(true);
@@ -52,14 +57,28 @@ public class Task1Controller : MonoBehaviour
             lockedIn = true;
             //Disable player movement
         }
+        else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && isFinished)
+        {
+            taskBackground.SetActive(true);
+            yellowBar.SetActive(true);
+            displayCode.SetActive(true);
+            lockedIn = true;
+            //Disable player movement
+        }
     }
     private IEnumerator Minigame()
     {
-        while (points < 7)
+        while (points <= 6)
         {
         yield return new WaitForSeconds(Random.value+0.7f); // make random
         Instantiate(yellowBar, yellowRectTransform.position, Quaternion.identity, transform);
         }
+        yield return new WaitForSeconds(0.2f);
+        loadingBar.SetActive(false);
+        code = Random.Range(1000, 10000).ToString();
+        displayCodeTxt.text = "CODE = " + code;
+        displayCode.SetActive(true);
+        isFinished = true;
     }
 
     public void ButtonPessed()
@@ -96,18 +115,21 @@ public class Task1Controller : MonoBehaviour
 
     private void CheckIfHit()
     {
-        if (!pointRecieved && points > 0)
+        if (!pointRecieved && points > 0 && points <=6)
         {
             points--;
             UpdateLoadBar();
         }
     }
     private void AddPoint()
-    {
+    {   if (points <= 6)
+        {
         print("Ding");
         pointRecieved = true;
         points++;
         UpdateLoadBar();
+
+        }
     }
 
     private void UpdateLoadBar()
