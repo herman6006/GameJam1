@@ -9,7 +9,6 @@ public class PlayerScript : MonoBehaviour
     private float xvelocity;
     private float yvelocity;
 
-
     private Rigidbody2D rgbd;
     void Start()
     {

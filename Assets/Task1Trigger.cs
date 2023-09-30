@@ -1,25 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PressurePlate : MonoBehaviour
+public class Task1Trigger : MonoBehaviour
 {
-    public bool isActive = false;
+    private SpriteRenderer sprd;
+    public bool isAtTerminal = false;
+    private void Start()
+    {
+        sprd = GetComponent<SpriteRenderer>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            BroadcastMessage("TurnOn");
-            isActive = true;
+            isAtTerminal = true;
+            sprd.enabled = true;
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            BroadcastMessage("TurnOff");
-            isActive = false;
+            sprd.enabled = false;
+            isAtTerminal = false;
         }
     }
 }
