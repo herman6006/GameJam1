@@ -5,15 +5,21 @@ using UnityEngine;
 public class wire : MonoBehaviour
 {
     private SpriteRenderer sprd;
-    private Sprite wireOn;
+    [SerializeField] private Sprite wireOn;
+    private Sprite wireOff;
     void Start()
     {
         sprd = GetComponent<SpriteRenderer>();
+        wireOff = sprd.sprite;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void TurnOn()
     {
-        
+        sprd.sprite = wireOn;
+    }
+
+    private void TurnOff()
+    {
+        sprd.sprite = wireOff;
     }
 }
