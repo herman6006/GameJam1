@@ -22,7 +22,7 @@ public class Task1Trigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            sprd.enabled = true;
+            sprd.enabled = false;
             isAtTerminal = false;
         }
     }
