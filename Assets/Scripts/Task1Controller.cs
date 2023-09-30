@@ -39,6 +39,8 @@ public class Task1Controller : MonoBehaviour
             yellowBar.SetActive(false);
             displayCode.SetActive(false);
             lockedIn = false;
+            StopAllCoroutines();
+            BroadcastMessage("DestroyAllRemaining");
             //Enable player movement
         }
         else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && !isFinished)
@@ -68,10 +70,11 @@ public class Task1Controller : MonoBehaviour
     }
     private IEnumerator Minigame()
     {
+        yield return new WaitForSeconds(0.2f);
         while (points <= 6)
         {
-        yield return new WaitForSeconds(Random.value+0.7f); // make random
         Instantiate(yellowBar, yellowRectTransform.position, Quaternion.identity, transform);
+        yield return new WaitForSeconds(Random.value+0.7f); // make random
         }
         yield return new WaitForSeconds(0.2f);
         loadingBar.SetActive(false);

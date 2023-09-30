@@ -28,4 +28,6 @@ public class yellowBar : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    private void DestroyAllRemaining() { Destroy(gameObject); }
 }
