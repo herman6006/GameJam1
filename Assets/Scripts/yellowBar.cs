@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 
 public class yellowBar : MonoBehaviour
 {
+    public bool isTouching = false;
     // Start is called before the first frame update
     void Start()
     {

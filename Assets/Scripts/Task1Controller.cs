@@ -63,7 +63,6 @@ public class Task1Controller : MonoBehaviour
     {
         if (!buttonCooldown)
         {
-            print("Hej");
             //play sfx?
             checkDetection = true;
             buttonCooldown = true;
@@ -82,8 +81,9 @@ public class Task1Controller : MonoBehaviour
         buttonCooldown = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter(Collider other)
     {
+        print("Yes");
         if (other.CompareTag("YellowBar") && checkDetection == true)
         {
             Destroy(other.gameObject);
