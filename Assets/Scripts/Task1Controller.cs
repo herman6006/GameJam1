@@ -10,7 +10,6 @@ public class Task1Controller : MonoBehaviour
     private bool canStart;
     private bool inArea;
     private bool lockedIn = false;
-    private bool checkDetection = false;
     private bool buttonCooldown = false;
     private bool pointRecieved = false;
     private RectTransform yellowRectTransform;
