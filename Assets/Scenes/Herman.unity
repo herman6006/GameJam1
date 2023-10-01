@@ -683,6 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06901087cd6667249a0d2b46c3617b96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  electricity: {fileID: 0}
   isActive: 0
 --- !u!61 &408833477
 BoxCollider2D:
@@ -1490,6 +1491,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: fd904e5153b1f7c4a923bd52deef2eb7, type: 3}
   - {fileID: 21300000, guid: c26ea8f8e86e8bf4b841cfbeca2011bb, type: 3}
   displayCodeTxt: {fileID: 849789376}
+  buttonHit: {fileID: 0}
+  yellowT: {fileID: 0}
+  yellowF: {fileID: 0}
   code: 
 --- !u!65 &923508019
 BoxCollider:
@@ -2648,6 +2652,10 @@ PrefabInstance:
     - target: {fileID: 1125170461104622022, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5808949117789677103, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
