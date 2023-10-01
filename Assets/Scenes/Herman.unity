@@ -2935,6 +2935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ToxicBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 329870884122246361, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1125170461104622022, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.0346
@@ -3026,6 +3030,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6599829439872924139, guid: c639c30e2e24de54491d8e1a3350826f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7682339436272879108, guid: c639c30e2e24de54491d8e1a3350826f, type: 3}
+      propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8365947917093816424, guid: c639c30e2e24de54491d8e1a3350826f, type: 3}
@@ -3365,6 +3373,7 @@ GameObject:
   - component: {fileID: 2048587699}
   - component: {fileID: 2048587698}
   - component: {fileID: 2048587700}
+  - component: {fileID: 2048587701}
   m_Layer: 0
   m_Name: PlayArea
   m_TagString: Untagged
@@ -3455,6 +3464,51 @@ MonoBehaviour:
   rightWall: {fileID: 856023711}
   topWall: {fileID: 1600059819}
   botWall: {fileID: 335349987}
+--- !u!61 &2048587701
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048587697}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4323942, y: -0.09056532}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.06231749, y: 0.1959566}
+  m_EdgeRadius: 0
 --- !u!1 &2094639420
 GameObject:
   m_ObjectHideFlags: 0

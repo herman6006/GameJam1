@@ -4,10 +4,23 @@ using UnityEngine;
 
 public class ShrinkLevel : MonoBehaviour
 {
-    [SerializeField] private GameObject leftWall, rightWall, topWall, botWall;  
+    [SerializeField] private GameObject leftWall, rightWall, topWall, botWall;
+    private bool hasPlayerEntered = false;
+    private BoxCollider2D Box;
+
+    MoveObject ToxicBarrel;
+    PlayerScript Player;
     void Start()
     {
-        StartCoroutine(Shrink());
+        Box = GetComponent<BoxCollider2D>();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Shrink());
+            Box.enabled = false;
+        }
     }
     private IEnumerator Shrink()
     {
