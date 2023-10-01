@@ -32,7 +32,6 @@ public class Task1Controller : MonoBehaviour
         inArea = task1trigger.GetComponent<Task1Trigger>().isAtTerminal;
         yellowRectTransform = yellowBarPos.GetComponent<RectTransform>();
 
-        canStart = true;
         if (lockedIn && Input.GetButtonDown("e"))
         {
             error.SetActive(false);
