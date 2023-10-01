@@ -9,7 +9,7 @@ public class Task1Controller : MonoBehaviour
     [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode;
     [SerializeField] private Sprite[] loadingBarSprites;
     [SerializeField] private TMP_Text displayCodeTxt;
-    [SerializeField] private AudioClip buttonHit, yellowT, yellowF;
+    [SerializeField] private AudioClip buttonHit, yellowT, yellowF, powerOn;
     private bool canStart;
     private bool inArea;
     private bool lockedIn = false;
@@ -53,6 +53,7 @@ public class Task1Controller : MonoBehaviour
             yellowBar.SetActive(true);
             StartCoroutine(Minigame());
             lockedIn = true;
+            audioSource.PlayOneShot(powerOn, 1f);
             //Disable player movement
         }
         else if (Input.GetButtonDown("e") && !canStart && inArea && !lockedIn)
