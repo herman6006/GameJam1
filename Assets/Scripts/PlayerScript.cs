@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private GameObject GameOverScreen, musicPlayer;
+    [SerializeField] private GameObject GameOverScreen, musicPlayer, playArea;
     private float xvelocity;
     private float yvelocity;
     private Animator anim;
@@ -60,7 +60,7 @@ public class PlayerScript : MonoBehaviour
             GameOverScreen.SetActive(true);
             StopMovement();
             musicPlayer.GetComponent<MusicScript>().StopMusic();
-  
+            playArea.GetComponent<ShrinkLevel>().StopShrink();
 
         }
     }

@@ -7,11 +7,14 @@ public class ShrinkLevel : MonoBehaviour
     [SerializeField] private GameObject leftWall, rightWall, topWall, botWall, leftVoid, rightVoid, leftSpikes, rightSpikes, leftParticles, rightParticles, musicPlayer;
     private BoxCollider2D box;
     private ParticleSystem left, right;
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip wallSFX;
     void Start()
     {
         left = leftParticles.GetComponent<ParticleSystem>();
         right = rightParticles.GetComponent<ParticleSystem>();
         box = GetComponent<BoxCollider2D>();
+        audioSource = GetComponent<AudioSource>();
     }
     private IEnumerator Shrink()
     {
@@ -24,7 +27,7 @@ public class ShrinkLevel : MonoBehaviour
         musicPlayer.GetComponent<MusicScript>().StartMusic();
         for (int i = 0; i < 14; i++)
         {
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(4);
             rightWall.transform.position = new Vector3(rightWall.transform.position.x - 0.5f, rightWall.transform.position.y); 
             leftWall.transform.position = new Vector3(leftWall.transform.position.x + 0.5f, leftWall.transform.position.y);
             right.Play();
@@ -34,6 +37,7 @@ public class ShrinkLevel : MonoBehaviour
 
             rightVoid.transform.position = new Vector3(rightVoid.transform.position.x - 0.5f, rightVoid.transform.position.y);
             leftVoid.transform.position = new Vector3(leftVoid.transform.position.x + 0.5f, leftVoid.transform.position.y);
+            audioSource.PlayOneShot(wallSFX, 0.5f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,5 +47,10 @@ public class ShrinkLevel : MonoBehaviour
         StartCoroutine(Shrink());
         box.enabled = false;
         }
+    }
+
+    public void StopShrink()
+    {
+        StopAllCoroutines();
     }
 }
