@@ -37,7 +37,7 @@ public class ShrinkLevel : MonoBehaviour
 
             rightVoid.transform.position = new Vector3(rightVoid.transform.position.x - 0.5f, rightVoid.transform.position.y);
             leftVoid.transform.position = new Vector3(leftVoid.transform.position.x + 0.5f, leftVoid.transform.position.y);
-            audioSource.PlayOneShot(wallSFX, 0.5f);
+            audioSource.PlayOneShot(wallSFX, 0.25f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
