@@ -9,6 +9,7 @@ public class Task1Controller : MonoBehaviour
     [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode;
     [SerializeField] private Sprite[] loadingBarSprites;
     [SerializeField] private TMP_Text displayCodeTxt;
+    [SerializeField] private AudioClip buttonHit, yellowT, yellowF;
     private bool canStart;
     private bool inArea;
     private bool lockedIn = false;
@@ -16,12 +17,14 @@ public class Task1Controller : MonoBehaviour
     private bool pointRecieved = false;
     private RectTransform yellowRectTransform;
     private Image loadBarImage;
+    private AudioSource audioSource;
     private int points = 0;
     public string code;
     private bool isFinished = false;
     private void Start()
     {
         loadBarImage = loadingBar.GetComponent<Image>();
+        audioSource = GetComponent<AudioSource>();
     }
     void Update()
     {
@@ -93,7 +96,7 @@ public class Task1Controller : MonoBehaviour
             buttonCooldown = true;
             Invoke("RemoveCooldown", 0.1f);
             Invoke("CheckIfHit", 0.05f);
-
+            audioSource.PlayOneShot(buttonHit, 1f);
         }
     }
     private void RemoveCooldown()
@@ -122,16 +125,16 @@ public class Task1Controller : MonoBehaviour
         {
             points--;
             UpdateLoadBar();
+            audioSource.PlayOneShot(yellowF, 0.7f);
         }
     }
     private void AddPoint()
     {   if (points <= 6)
         {
-        print("Ding");
+        audioSource.PlayOneShot(yellowT, 0.7f);
         pointRecieved = true;
         points++;
         UpdateLoadBar();
-
         }
     }
 
