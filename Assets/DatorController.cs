@@ -35,7 +35,7 @@ public class DatorController : MonoBehaviour
         {
             UISprite.SetActive(true);
             lockedIn = true;
-            codeInput.text = "";
+            codeInput.text = null;
             write();
             
         }
