@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-
+ 
     private float xvelocity;
     private float yvelocity;
     private Animator anim;
