@@ -12,7 +12,6 @@ public class PlayerScript : MonoBehaviour
     Vector2 movement;
 
 
-
     private Rigidbody2D rgbd;
     void Start()
     {

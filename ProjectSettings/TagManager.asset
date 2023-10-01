@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ToxicBarrel
+  - YellowBar
   layers:
   - Default
   - TransparentFX
