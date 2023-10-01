@@ -58,6 +58,7 @@ public class Task1Controller : MonoBehaviour
         else if (Input.GetButtonDown("e") && !canStart && inArea && !lockedIn)
         {
             error.SetActive(true);
+            button.SetActive(true);
             lockedIn = true;
             //Disable player movement
         }

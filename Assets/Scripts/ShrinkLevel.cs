@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ShrinkLevel : MonoBehaviour
 {
-    [SerializeField] private GameObject leftWall, rightWall, topWall, botWall, leftVoid, rightVoid, leftSpikes, rightSpikes, musicPlayer;
+    [SerializeField] private GameObject leftWall, rightWall, topWall, botWall, leftVoid, rightVoid, leftSpikes, rightSpikes, leftParticles, rightParticles, musicPlayer;
     private BoxCollider2D box;
+    private ParticleSystem left, right;
     void Start()
     {
+        left = leftParticles.GetComponent<ParticleSystem>();
+        right = rightParticles.GetComponent<ParticleSystem>();
         box = GetComponent<BoxCollider2D>();
     }
     private IEnumerator Shrink()
@@ -24,6 +27,8 @@ public class ShrinkLevel : MonoBehaviour
             yield return new WaitForSeconds(2);
             rightWall.transform.position = new Vector3(rightWall.transform.position.x - 0.5f, rightWall.transform.position.y); 
             leftWall.transform.position = new Vector3(leftWall.transform.position.x + 0.5f, leftWall.transform.position.y);
+            right.Play();
+            left.Play();
             topWall.transform.localScale = new Vector3(topWall.transform.localScale.x - 1, topWall.transform.localScale.y, 0);
             botWall.transform.localScale = new Vector3(botWall.transform.localScale.x - 1, botWall.transform.localScale.y, 0);
 
