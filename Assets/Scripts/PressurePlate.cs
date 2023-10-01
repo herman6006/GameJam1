@@ -8,7 +8,7 @@ public class PressurePlate : MonoBehaviour
     public bool isActive = false;
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("ToxicBarrel"))
         {
             BroadcastMessage("TurnOn");
             isActive = true;
@@ -16,7 +16,7 @@ public class PressurePlate : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("ToxicBarrel"))
         {
             BroadcastMessage("TurnOff");
             isActive = false;
