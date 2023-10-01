@@ -125,7 +125,7 @@ public class Task1Controller : MonoBehaviour
         {
             points--;
             UpdateLoadBar();
-            audioSource.PlayOneShot(yellowF, 0.7f);
+            audioSource.PlayOneShot(yellowF, 1f);
         }
     }
     private void AddPoint()
