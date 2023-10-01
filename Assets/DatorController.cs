@@ -20,7 +20,6 @@ public class DatorController : MonoBehaviour
     private Text codeInput;
     void Start()
     {
-        codeInput = GetComponent<Text>();
         UIImage = UISprite.GetComponent<Image>();
     }
     void Update()
@@ -35,7 +34,7 @@ public class DatorController : MonoBehaviour
         {
             UISprite.SetActive(true);
             lockedIn = true;
-            codeInput.text = null;
+            codeInput.text = "a";
             write();
             
         }
