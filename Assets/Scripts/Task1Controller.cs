@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Task1Controller : MonoBehaviour
 {
-    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode;
+    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode, player;
     [SerializeField] private Sprite[] loadingBarSprites;
     [SerializeField] private TMP_Text displayCodeTxt;
     [SerializeField] private AudioClip buttonHit, yellowT, yellowF;
@@ -43,6 +43,7 @@ public class Task1Controller : MonoBehaviour
             lockedIn = false;
             StopAllCoroutines();
             BroadcastMessage("DestroyAllRemaining");
+            player.GetComponent<PlayerScript>().canMove = true;
             //Enable player movement
         }
         else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && !isFinished)
@@ -53,6 +54,7 @@ public class Task1Controller : MonoBehaviour
             yellowBar.SetActive(true);
             StartCoroutine(Minigame());
             lockedIn = true;
+            player.GetComponent<PlayerScript>().StopMovement();
             //Disable player movement
         }
         else if (Input.GetButtonDown("e") && !canStart && inArea && !lockedIn)
@@ -60,7 +62,7 @@ public class Task1Controller : MonoBehaviour
             error.SetActive(true);
             button.SetActive(true);
             lockedIn = true;
-            //Disable player movement
+            player.GetComponent<PlayerScript>().StopMovement();
         }
         else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && isFinished)
         {
@@ -68,7 +70,7 @@ public class Task1Controller : MonoBehaviour
             yellowBar.SetActive(true);
             displayCode.SetActive(true);
             lockedIn = true;
-            //Disable player movement
+            player.GetComponent<PlayerScript>().StopMovement();
         }
     }
     private IEnumerator Minigame()

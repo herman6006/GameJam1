@@ -10,11 +10,13 @@ public class PlayerScript : MonoBehaviour
     private float yvelocity;
     private Animator anim;
     Vector2 movement;
+    public bool canMove;
 
 
     private Rigidbody2D rgbd;
     void Start()
     {
+        canMove = true;
         rgbd = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
@@ -32,11 +34,30 @@ public class PlayerScript : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (canMove)
+        {
         if (xvelocity != 0 && yvelocity != 0)
         {
             xvelocity *= 0.75f;
             yvelocity *= 0.75f;
         }
         rgbd.velocity = new Vector2(xvelocity * moveSpeed, yvelocity * moveSpeed);
+
+        }
+    }
+
+    public void StopMovement()
+    {
+        canMove = false;
+        xvelocity = 0;
+        yvelocity = 0;
+        rgbd.velocity = Vector2.zero;
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Spike"))
+        {
+            //Game over
+        }
     }
 }

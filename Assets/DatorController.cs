@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class DatorController : MonoBehaviour
 {
-    [SerializeField] private GameObject datorTrigger, UISprite, task1;
+    [SerializeField] private GameObject datorTrigger, UISprite, task1, player;
     [SerializeField] private Sprite[] UISprites;
     private bool inArea;
     private bool lockedIn = false;
@@ -29,10 +29,12 @@ public class DatorController : MonoBehaviour
         {
             UISprite.SetActive(false);
             lockedIn = false;
+            player.GetComponent<PlayerScript>().canMove = true;
         }
         else if (Input.GetButtonDown("e") && inArea && !lockedIn)
         {
             UISprite.SetActive(true);
+            player.GetComponent<PlayerScript>().StopMovement();
             lockedIn = true;
             codeInput.text = "a";
             write();
