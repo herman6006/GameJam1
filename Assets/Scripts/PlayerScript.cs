@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
- 
+    [SerializeField] private GameObject GameOverScreen, musicPlayer;
     private float xvelocity;
     private float yvelocity;
     private Animator anim;
@@ -57,7 +57,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spike"))
         {
-            //Game over
+            GameOverScreen.SetActive(true);
+            StopMovement();
+            musicPlayer.GetComponent<MusicScript>().StopMusic();
+  
+
         }
     }
 }

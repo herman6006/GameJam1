@@ -14,4 +14,8 @@ public class MusicScript : MonoBehaviour
     {
         audiosource.Play();
     }
+    public void StopMusic()
+    {
+        audiosource.Stop();
+    }
 }
