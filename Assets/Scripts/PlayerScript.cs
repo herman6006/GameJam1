@@ -8,17 +8,26 @@ public class PlayerScript : MonoBehaviour
 
     private float xvelocity;
     private float yvelocity;
+    private Animator anim;
+    Vector2 movement;
+
 
     private Rigidbody2D rgbd;
     void Start()
     {
         rgbd = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
     {
         xvelocity = Input.GetAxisRaw("Horizontal");
         yvelocity = Input.GetAxisRaw("Vertical");
+        anim.SetFloat("Horizontal", xvelocity);
+        anim.SetFloat("Vertical", yvelocity);
+        anim.SetFloat("Speed", movement.sqrMagnitude);
+        //anim.SetFloat("Movespeed", Mathf.Abs(rgbd.velocity.x));
+        //anim.SetFloat("Movespeed", Mathf.Abs(rgbd.velocity.y));
     }
 
     void FixedUpdate()
