@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Task1Controller2 : MonoBehaviour
 {
-    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode, player;
+    [SerializeField] private GameObject pressurePlate, task1trigger, taskBackground, error, button, loadingBar, yellowBar, yellowBarPos, displayCode, player, colorController;
     [SerializeField] private Sprite[] loadingBarSprites;
     [SerializeField] private TMP_Text displayCodeTxt;
     [SerializeField] private AudioClip buttonHit, yellowT, yellowF, powerOn;
@@ -25,6 +25,7 @@ public class Task1Controller2 : MonoBehaviour
     {
         loadBarImage = loadingBar.GetComponent<Image>();
         audioSource = GetComponent<AudioSource>();
+        code = Random.Range(10, 100).ToString();
     }
     void Update()
     {
@@ -40,6 +41,7 @@ public class Task1Controller2 : MonoBehaviour
             loadingBar.SetActive(false);
             yellowBar.SetActive(false);
             displayCode.SetActive(false);
+            colorController.SetActive(false);
             lockedIn = false;
             StopAllCoroutines();
             BroadcastMessage("DestroyAllRemaining");
@@ -51,6 +53,8 @@ public class Task1Controller2 : MonoBehaviour
             taskBackground.SetActive(true);
             button.SetActive(true);
             loadingBar.SetActive(true);
+            colorController.SetActive(true);
+            colorController.GetComponent<ColorController>().SetColorRed();
             yellowBar.SetActive(true);
             StartCoroutine(Minigame());
             lockedIn = true;
@@ -80,12 +84,11 @@ public class Task1Controller2 : MonoBehaviour
         while (points <= 6)
         {
         Instantiate(yellowBar, yellowRectTransform.position, Quaternion.identity, transform);
-        yield return new WaitForSeconds(Random.value+0.4f); // make random
+        yield return new WaitForSeconds(0.4f); // make random
         }
         yield return new WaitForSeconds(0.2f);
         loadingBar.SetActive(false);
-        code = Random.Range(1000, 10000).ToString();
-        displayCodeTxt.text = "CODE = " + code;
+        displayCodeTxt.text = "CODE = "+code+"??";
         displayCode.SetActive(true);
         isFinished = true;
     }
@@ -134,6 +137,7 @@ public class Task1Controller2 : MonoBehaviour
     private void AddPoint()
     {   if (points <= 6)
         {
+        colorController.GetComponent<ColorController>().ChangeColor();
         audioSource.PlayOneShot(yellowT, 0.7f);
         pointRecieved = true;
         points++;

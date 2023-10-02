@@ -9,6 +9,7 @@ public class RGBBAR : MonoBehaviour
 {
     private RectTransform rect;
     public bool isTouching = false;
+    public Color currentColor = Color.red;
     private float multiplier;
     private UnityEngine.UI.Image image;
 
@@ -17,10 +18,22 @@ public class RGBBAR : MonoBehaviour
         rect = GetComponent<RectTransform>();
         image = GetComponent<UnityEngine.UI.Image>();
         gameObject.SetActive(true);
-        multiplier = 5 + (Random.value * 5f);
-
+        multiplier = 8;
+        var randomValue = (Random.Range(0, 4));
+        if (randomValue == 0)
+        {
+            image.color = Color.red;
+        }else if (randomValue == 1)
+        {
+            image.color = Color.green;
+        }else if (randomValue == 2)
+        {
+            image.color = Color.blue;
+        }else if (randomValue == 3)
+        {
+            image.color = Color.yellow;
+        }
         
-        image.color = new Color(Random.value, Random.value, Random.value);
     }
 
     private void FixedUpdate()
@@ -30,7 +43,10 @@ public class RGBBAR : MonoBehaviour
 
     private void ButtonPressed()
     {
-        if (isTouching)
+        print(image.color);
+        print(currentColor);
+        print(Color.red);
+        if (isTouching && image.color == currentColor)
         {
             SendMessageUpwards("AddPoint");
             Destroy(gameObject);

@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4788606223997558482
 RectTransform:
   m_ObjectHideFlags: 0
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouching: 0
+  currentColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!212 &5719315774771777193
 SpriteRenderer:
   m_ObjectHideFlags: 0

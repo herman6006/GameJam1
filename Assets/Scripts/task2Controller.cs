@@ -34,6 +34,7 @@ public class task2Controller : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         correctOrWrongIMG = correctOrWrong.GetComponent<Image>();
+        code2 = Random.Range(10, 100).ToString();
     }
 
     // Update is called once per frame
@@ -46,6 +47,13 @@ public class task2Controller : MonoBehaviour
             lockedIn = false;
             UIImage.SetActive(false);
             codeDisplayTxt.gameObject.SetActive(false);
+            frames[0].gameObject.SetActive(false);
+            frames[1].gameObject.SetActive(false);
+            frames[2].gameObject.SetActive(false);
+            correctOrWrong.SetActive(false);
+            button1.SetActive(false);
+            button2.SetActive(false);
+            button3.SetActive(false);
             isFinished = true;
             player.GetComponent<PlayerScript>().canMove = true;
         }
@@ -193,7 +201,7 @@ public class task2Controller : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         if (wasRight == 2)
         {
-            code2 = Random.Range(10, 100).ToString();
+            
 
             codeDisplayTxt.text = "CODE = ??" + code2;
             codeDisplayTxt.gameObject.SetActive(true);

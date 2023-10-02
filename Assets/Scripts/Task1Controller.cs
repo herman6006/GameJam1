@@ -25,6 +25,7 @@ public class Task1Controller : MonoBehaviour
     {
         loadBarImage = loadingBar.GetComponent<Image>();
         audioSource = GetComponent<AudioSource>();
+        code = Random.Range(1000, 10000).ToString();
     }
     void Update()
     {
@@ -84,7 +85,6 @@ public class Task1Controller : MonoBehaviour
         }
         yield return new WaitForSeconds(0.2f);
         loadingBar.SetActive(false);
-        code = Random.Range(1000, 10000).ToString();
         displayCodeTxt.text = "CODE = " + code;
         displayCode.SetActive(true);
         isFinished = true;
