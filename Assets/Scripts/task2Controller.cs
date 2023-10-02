@@ -47,6 +47,7 @@ public class task2Controller : MonoBehaviour
             lockedIn = false;
             UIImage.SetActive(false);
             codeDisplayTxt.gameObject.SetActive(false);
+            pictureText.gameObject.SetActive(false);
             frames[0].gameObject.SetActive(false);
             frames[1].gameObject.SetActive(false);
             frames[2].gameObject.SetActive(false);
