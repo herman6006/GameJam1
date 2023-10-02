@@ -8,13 +8,17 @@ public class ShrinkLevel : MonoBehaviour
     private BoxCollider2D box;
     private ParticleSystem left, right;
     private AudioSource audioSource;
-    [SerializeField] private AudioClip wallSFX;
+    private Camera mainCamera;
+    private ScreenShake screenShake;
+    [SerializeField] private AudioClip wallSFX, shake;
     void Start()
     {
         left = leftParticles.GetComponent<ParticleSystem>();
         right = rightParticles.GetComponent<ParticleSystem>();
         box = GetComponent<BoxCollider2D>();
         audioSource = GetComponent<AudioSource>();
+        mainCamera = Camera.main;
+        screenShake = mainCamera.GetComponent<ScreenShake>();
     }
     private IEnumerator Shrink()
     {
@@ -44,8 +48,17 @@ public class ShrinkLevel : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
         StartCoroutine(Shrink());
         box.enabled = false;
+
+           
+        if (screenShake != null)
+            {
+                screenShake.Shake();
+            }
+            audioSource.PlayOneShot(shake, 0.25f);
+
         }
     }
 
