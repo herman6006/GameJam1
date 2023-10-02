@@ -23,6 +23,7 @@ public class ScreenShake : MonoBehaviour
     {
         originalPosition = cameraTransform.localPosition;
         currentDuration = shakeDuration;
+        Invoke("Fix", shakeDuration + 0.01f);
     }
 
     void Update()
@@ -37,5 +38,12 @@ public class ScreenShake : MonoBehaviour
             currentDuration = 0f;
             cameraTransform.localPosition = originalPosition;
         }
+    }
+
+    private void Fix()
+    {
+        var tempColor = cameraTransform.GetComponent<SpriteRenderer>().color;
+        tempColor.a = 0;
+        cameraTransform.GetComponent<SpriteRenderer>().color = tempColor;
     }
 }
