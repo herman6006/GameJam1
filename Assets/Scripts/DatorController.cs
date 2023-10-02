@@ -119,21 +119,25 @@ public class DatorController : MonoBehaviour
     {
         answerString += "red";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void BluePressed()
     {
         answerString += "blue";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void YellowPressed()
     {
         answerString += "yellow";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void GreenPressed()
     {
         answerString += "green";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
 
     private void EnableColorButtons(bool yesOrNo)
