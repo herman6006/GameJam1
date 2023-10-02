@@ -224,7 +224,7 @@ public class task2Controller : MonoBehaviour
     private void Randomize()
     {
         playerAnswer = 0;
-        var value = Random.Range(1, 2);
+        var value = Random.Range(1, 4);
         var numbers = new List<int>() { 0, 1, 2, 3, 4 };
         if (value == 1)
         {
@@ -244,7 +244,7 @@ public class task2Controller : MonoBehaviour
                 var randomValue = Random.Range(0, numbers.Count);
                 frames[i].sprite = xSprites[numbers[randomValue]];
                 numbers.RemoveAt(randomValue);
-                // HÄR
+                pictureText.text = "Knife";
             }
         }
         else if (value == 3)
@@ -254,6 +254,7 @@ public class task2Controller : MonoBehaviour
                 var randomValue = Random.Range(0, numbers.Count);
                 frames[i].sprite = ySprites[numbers[randomValue]];
                 numbers.RemoveAt(randomValue);
+                pictureText.text = "King";
             }
         }
         if (numbers.Contains(4))
