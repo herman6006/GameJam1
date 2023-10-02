@@ -27,7 +27,7 @@ public class ShrinkLevel : MonoBehaviour
         musicPlayer.GetComponent<MusicScript>().StartMusic();
         for (int i = 0; i < 14; i++)
         {
-            yield return new WaitForSeconds(4);
+            yield return new WaitForSeconds(4.5f);
             rightWall.transform.position = new Vector3(rightWall.transform.position.x - 0.5f, rightWall.transform.position.y); 
             leftWall.transform.position = new Vector3(leftWall.transform.position.x + 0.5f, leftWall.transform.position.y);
             right.Play();
