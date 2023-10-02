@@ -8,4 +8,9 @@ public class SceneReload : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(1);
+    }
 }
