@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Dator2 : MonoBehaviour
 {
-    [SerializeField] private GameObject datorTrigger, UISprite, task1, task2, player, UIbutton, redButton, blueButton, greenButton, yellowButton, correctOrWrong, colorDisplay;
+    [SerializeField] private GameObject datorTrigger, UISprite, task1, task2, player, UIbutton, redButton, blueButton, greenButton, yellowButton, correctOrWrong, colorDisplay, victory, playArea;
     [SerializeField] private Sprite[] UISprites;
     [SerializeField] private AudioClip powerOn, colorFlash, colorPick, wrong, button;
     private AudioSource audioSource;
@@ -108,7 +108,8 @@ public class Dator2 : MonoBehaviour
         yield return new WaitUntil(() => level == 3);
         StartCoroutine(MinigameLevel(6, 3));
         yield return new WaitUntil(() => level == 4);
-        print("No Way");
+        victory.SetActive(true);
+        playArea.GetComponent<ShrinkLevel>().StopShrink();
     }
     public void StartMinigame()
     {
