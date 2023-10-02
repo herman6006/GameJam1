@@ -84,7 +84,7 @@ public class Task1Controller2 : MonoBehaviour
         while (points <= 6)
         {
         Instantiate(yellowBar, yellowRectTransform.position, Quaternion.identity, transform);
-        yield return new WaitForSeconds(0.4f); // make random
+        yield return new WaitForSeconds(0.3f); // make random
         }
         yield return new WaitForSeconds(0.2f);
         loadingBar.SetActive(false);

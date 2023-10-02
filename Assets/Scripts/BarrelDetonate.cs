@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BarrelDetonate : MonoBehaviour
 {
-    [SerializeField] private GameObject gameOverScreen, player, playArea, musicPlayer;
+    [SerializeField] private GameObject gameOverScreen, player, playArea, musicPlayer, victoryScreen;
     [SerializeField] private ParticleSystem posionGas;
     [SerializeField] private AudioClip smokeSFX;
     [SerializeField] private TMP_Text deathText;
@@ -30,11 +30,13 @@ public class BarrelDetonate : MonoBehaviour
 
     private void Gameover()
     {
+        if(victoryScreen.activeSelf == false)
+        {
         deathText.text = "Died to toxic gas";
         gameOverScreen.SetActive(true);
         playArea.GetComponent<ShrinkLevel>().StopShrink();
         musicPlayer.GetComponent<MusicScript>().StopMusic();
-        
+        }  
     }
 
     private void BecomeGreen()
