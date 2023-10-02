@@ -104,9 +104,9 @@ public class DatorController : MonoBehaviour
         UIbutton.SetActive(false);
         StartCoroutine(MinigameLevel(1, 1));
         yield return new WaitUntil(() => level == 2);
-        StartCoroutine(MinigameLevel(4, 2));
+        StartCoroutine(MinigameLevel(3, 2));
         yield return new WaitUntil(() => level == 3);
-        StartCoroutine(MinigameLevel(8, 3));
+        StartCoroutine(MinigameLevel(6, 3));
         yield return new WaitUntil(() => level == 4);
         print("No Way");
     }
