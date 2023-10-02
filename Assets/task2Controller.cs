@@ -44,7 +44,9 @@ public class task2Controller : MonoBehaviour
         if (lockedIn && Input.GetButtonDown("e") && canExit)
         {
             lockedIn = false;
-            StopAllCoroutines();
+            UIImage.SetActive(false);
+            codeDisplayTxt.gameObject.SetActive(false);
+            isFinished = true;
             player.GetComponent<PlayerScript>().canMove = true;
         }
         else if (Input.GetButtonDown("e") && canStart && inArea && !lockedIn && !isFinished)
@@ -58,11 +60,6 @@ public class task2Controller : MonoBehaviour
             canExit = false;
             //Disable player movement
         }
-        else if (Input.GetButtonDown("e") && !canStart && inArea && !lockedIn)
-        {
-            lockedIn = true;
-            player.GetComponent<PlayerScript>().StopMovement();
-        }
     }
     private IEnumerator PictureGame()
     {
@@ -70,7 +67,8 @@ public class task2Controller : MonoBehaviour
         {
         yield return new WaitForSeconds(0.01f);
         Randomize();
-        frames[0].gameObject.SetActive(true);
+            pictureText.gameObject.SetActive(true);
+            frames[0].gameObject.SetActive(true);
         frames[1].gameObject.SetActive(true);
         frames[2].gameObject.SetActive(true);
         confirmButton.SetActive(true);
@@ -102,17 +100,20 @@ public class task2Controller : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         correctOrWrong.SetActive(false);
         yield return new WaitForSeconds(0.3f);
-        if (wasRight == 1)
+        if (wasRight == 2)
         {
-            stage++;
+                wasRight = 0;
+                stage++;
         }
+            wasRight = 0;
         }
         while (stage == 2)
         {
 
         yield return new WaitForSeconds(0.01f);
         Randomize();
-        frames[0].gameObject.SetActive(true);
+            pictureText.gameObject.SetActive(true);
+            frames[0].gameObject.SetActive(true);
         frames[1].gameObject.SetActive(true);
         frames[2].gameObject.SetActive(true);
         confirmButton.SetActive(true);
@@ -145,15 +146,18 @@ public class task2Controller : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         correctOrWrong.SetActive(false);
         yield return new WaitForSeconds(0.3f);
-        if (wasRight == 1)
+        if (wasRight == 2)
         {
+            wasRight = 0;
             stage++;
         }
+        wasRight = 0;
         }
         while (stage == 3)
         {
         yield return new WaitForSeconds(0.01f);
         Randomize();
+        pictureText.gameObject.SetActive(true);
         frames[0].gameObject.SetActive(true);
         frames[1].gameObject.SetActive(true);
         frames[2].gameObject.SetActive(true);
@@ -187,18 +191,25 @@ public class task2Controller : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         correctOrWrong.SetActive(false);
         yield return new WaitForSeconds(0.3f);
-        if (wasRight == 1)
+        if (wasRight == 2)
         {
             code2 = Random.Range(10, 100).ToString();
 
             codeDisplayTxt.text = "CODE = ??" + code2;
-        }
-
+            codeDisplayTxt.gameObject.SetActive(true);
+            StopAllCoroutines();
+                canExit = true;
+            }
+            else
+            {
+                wasRight = 0;
+            }
         }
     }
 
     private void Randomize()
     {
+        playerAnswer = 0;
         var value = Random.Range(1, 2);
         var numbers = new List<int>() { 0, 1, 2, 3, 4 };
         if (value == 1)
@@ -206,9 +217,9 @@ public class task2Controller : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 var randomValue = Random.Range(0, numbers.Count);
-                print(randomValue);
                 frames[i].sprite = BananaSprites[numbers[randomValue]];
                 numbers.RemoveAt(randomValue);
+                pictureText.text = "Banana";
                 
             }
         }
@@ -219,6 +230,7 @@ public class task2Controller : MonoBehaviour
                 var randomValue = Random.Range(0, numbers.Count);
                 frames[i].sprite = xSprites[numbers[randomValue]];
                 numbers.RemoveAt(randomValue);
+                // HÄR
             }
         }
         else if (value == 3)
@@ -238,6 +250,12 @@ public class task2Controller : MonoBehaviour
     public void ConfirmAnswer()
     {
         if (answer == 0 && playerAnswer != 0)
+        {
+            wasRight = 1;
+        } else if (answer == 0 && playerAnswer == 0)
+        {
+            wasRight = 2;
+        } else if (answer == 1 && playerAnswer == 0)
         {
             wasRight = 1;
         }
