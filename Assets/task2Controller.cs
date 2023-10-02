@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class task2Controller : MonoBehaviour
 {
-    [SerializeField] private GameObject pressurePlate2, task2trigger, UIImage, player, correctOrWrong;
+    [SerializeField] private GameObject pressurePlate2, task2trigger, UIImage, player, correctOrWrong, confirmButton, button1, button2, button3;
     [SerializeField] private AudioClip powerOn;
     [SerializeField] private TMP_Text codeDisplayTxt, pictureText;
     [SerializeField] private Sprite correct, wrong;
@@ -27,6 +27,8 @@ public class task2Controller : MonoBehaviour
     private int playerAnswer;
     private int wasRight = 0;
     private Image correctOrWrongIMG;
+    private int stage;
+    public string code2;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,6 +53,7 @@ public class task2Controller : MonoBehaviour
             lockedIn = true;
             audioSource.PlayOneShot(powerOn, 1f);
             player.GetComponent<PlayerScript>().StopMovement();
+            stage = 1;
             StartCoroutine(PictureGame());
             canExit = false;
             //Disable player movement
@@ -63,12 +66,23 @@ public class task2Controller : MonoBehaviour
     }
     private IEnumerator PictureGame()
     {
+        while (stage == 1)
+        {
         yield return new WaitForSeconds(0.01f);
         Randomize();
         frames[0].gameObject.SetActive(true);
         frames[1].gameObject.SetActive(true);
         frames[2].gameObject.SetActive(true);
+        confirmButton.SetActive(true);
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
+
         yield return new WaitUntil(() => wasRight != 0);
+        confirmButton.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
         if (wasRight == 1)
         {
             correctOrWrongIMG.sprite = wrong;
@@ -88,18 +102,111 @@ public class task2Controller : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         correctOrWrong.SetActive(false);
         yield return new WaitForSeconds(0.3f);
+        if (wasRight == 1)
+        {
+            stage++;
+        }
+        }
+        while (stage == 2)
+        {
 
+        yield return new WaitForSeconds(0.01f);
+        Randomize();
+        frames[0].gameObject.SetActive(true);
+        frames[1].gameObject.SetActive(true);
+        frames[2].gameObject.SetActive(true);
+        confirmButton.SetActive(true);
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
+
+        yield return new WaitUntil(() => wasRight != 0);
+        confirmButton.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
+        if (wasRight == 1)
+        {
+            correctOrWrongIMG.sprite = wrong;
+        }
+        else
+        {
+            correctOrWrongIMG.sprite = correct;
+        }
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        if (wasRight == 1)
+        {
+            stage++;
+        }
+        }
+        while (stage == 3)
+        {
+        yield return new WaitForSeconds(0.01f);
+        Randomize();
+        frames[0].gameObject.SetActive(true);
+        frames[1].gameObject.SetActive(true);
+        frames[2].gameObject.SetActive(true);
+        confirmButton.SetActive(true);
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
+
+        yield return new WaitUntil(() => wasRight != 0);
+        confirmButton.SetActive(false);
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
+        if (wasRight == 1)
+        {
+            correctOrWrongIMG.sprite = wrong;
+        }
+        else
+        {
+            correctOrWrongIMG.sprite = correct;
+        }
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        correctOrWrong.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        if (wasRight == 1)
+        {
+            code2 = Random.Range(10, 100).ToString();
+
+            codeDisplayTxt.text = "CODE = ??" + code2;
+        }
+
+        }
     }
 
     private void Randomize()
     {
-        var value = Random.Range(1, 4);
+        var value = Random.Range(1, 2);
         var numbers = new List<int>() { 0, 1, 2, 3, 4 };
         if (value == 1)
         {
             for (int i = 0; i < 3; i++)
             {
                 var randomValue = Random.Range(0, numbers.Count);
+                print(randomValue);
                 frames[i].sprite = BananaSprites[numbers[randomValue]];
                 numbers.RemoveAt(randomValue);
                 
