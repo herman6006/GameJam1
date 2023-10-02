@@ -74,7 +74,7 @@ public class DatorController : MonoBehaviour
                     {
                         StartCoroutine(Captcha());
                         canExit = false;
-                        codeInputTxt.gameObject.SetActive(false);
+                        
                     }
                 }
             }
@@ -86,6 +86,7 @@ public class DatorController : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         UIImage.sprite = UISprites[1];
+        codeInputTxt.gameObject.SetActive(false);
         yield return new WaitForSeconds(1);
         UIImage.sprite = UISprites[2];
         yield return new WaitForSeconds(0.5f);
