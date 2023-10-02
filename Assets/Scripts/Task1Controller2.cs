@@ -140,7 +140,7 @@ public class Task1Controller2 : MonoBehaviour
         colorController.GetComponent<ColorController>().ChangeColor();
         audioSource.PlayOneShot(yellowT, 0.7f);
         pointRecieved = true;
-        points++;
+        points+=2;
         UpdateLoadBar();
         }
     }

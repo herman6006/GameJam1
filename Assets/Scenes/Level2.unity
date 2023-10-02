@@ -22946,11 +22946,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1125170461104622022, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.51
+      value: -2.519
       objectReference: {fileID: 0}
     - target: {fileID: 1125170461104622022, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.68
+      value: -2.203
       objectReference: {fileID: 0}
     - target: {fileID: 1125170461104622022, guid: 935c1b87c00acaa43924ceaf4972676d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29147,7 +29147,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -5.1557226, y: -1.8524756}
+  m_Offset: {x: -2.6685133, y: -2.1075554}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -29158,7 +29158,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7475257, y: 1.3561397}
+  m_Size: {x: 0.78846836, y: 1.4776056}
   m_EdgeRadius: 0
 --- !u!82 &2048587702
 AudioSource:
@@ -30132,7 +30132,6 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 2048587699}
   - {fileID: 729508129}
-  - {fileID: 2116150637}
   - {fileID: 1705264007}
   - {fileID: 1768997635}
   - {fileID: 375481819}
@@ -30143,3 +30142,4 @@ SceneRoots:
   - {fileID: 120062770}
   - {fileID: 1079127273}
   - {fileID: 1985235365}
+  - {fileID: 2116150637}
