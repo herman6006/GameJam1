@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class task2Controller : MonoBehaviour
 {
     [SerializeField] private GameObject pressurePlate2, task2trigger, UIImage, player, correctOrWrong, confirmButton, button1, button2, button3;
-    [SerializeField] private AudioClip powerOn;
+    [SerializeField] private AudioClip powerOn, verify, right, colorPick, wronge;
     [SerializeField] private TMP_Text codeDisplayTxt, pictureText;
     [SerializeField] private Sprite correct, wrong;
     [SerializeField] private Sprite[] BananaSprites;
@@ -92,9 +92,11 @@ public class task2Controller : MonoBehaviour
         if (wasRight == 1)
         {
             correctOrWrongIMG.sprite = wrong;
+            audioSource.PlayOneShot(wronge, 0.25f);
         } else
         {
             correctOrWrongIMG.sprite = correct;
+            audioSource.PlayOneShot(right, 0.25f);
         }
         correctOrWrong.SetActive(true);
         yield return new WaitForSeconds(0.3f);
@@ -137,10 +139,12 @@ public class task2Controller : MonoBehaviour
         if (wasRight == 1)
         {
             correctOrWrongIMG.sprite = wrong;
+            audioSource.PlayOneShot(wronge, 0.25f);
         }
         else
         {
             correctOrWrongIMG.sprite = correct;
+            audioSource.PlayOneShot(right, 0.25f);
         }
         correctOrWrong.SetActive(true);
         yield return new WaitForSeconds(0.3f);
@@ -182,10 +186,12 @@ public class task2Controller : MonoBehaviour
         if (wasRight == 1)
         {
             correctOrWrongIMG.sprite = wrong;
+            audioSource.PlayOneShot(wronge, 0.25f);
         }
         else
         {
             correctOrWrongIMG.sprite = correct;
+            audioSource.PlayOneShot(right, 0.25f);
         }
         correctOrWrong.SetActive(true);
         yield return new WaitForSeconds(0.3f);
@@ -258,6 +264,7 @@ public class task2Controller : MonoBehaviour
     }
     public void ConfirmAnswer()
     {
+        audioSource.PlayOneShot(verify, 0.25f);
         if (answer == 0 && playerAnswer != 0)
         {
             wasRight = 1;
@@ -279,13 +286,16 @@ public class task2Controller : MonoBehaviour
     public void Button1()
     {
         playerAnswer = 1;
+        audioSource.PlayOneShot(verify, 0.25f);
     }
     public void Button2()
     {
         playerAnswer = 2;
+        audioSource.PlayOneShot(verify, 0.25f);
     }
     public void Button3()
     {
         playerAnswer = 3;
+        audioSource.PlayOneShot(verify, 0.25f);
     }
 }

@@ -10,7 +10,7 @@ public class Dator2 : MonoBehaviour
 {
     [SerializeField] private GameObject datorTrigger, UISprite, task1, task2, player, UIbutton, redButton, blueButton, greenButton, yellowButton, correctOrWrong, colorDisplay;
     [SerializeField] private Sprite[] UISprites;
-    [SerializeField] private AudioClip powerOn;
+    [SerializeField] private AudioClip powerOn, colorFlash, colorPick, wrong, button;
     private AudioSource audioSource;
     private bool inArea;
     private bool lockedIn = false;
@@ -112,27 +112,32 @@ public class Dator2 : MonoBehaviour
     }
     public void StartMinigame()
     {
+        audioSource.PlayOneShot(button, 0.25f);
         StartCoroutine(CaptchaMinigame());
     }
     public void RedPressed()
     {
         answerString += "red";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void BluePressed()
     {
         answerString += "blue";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void YellowPressed()
     {
         answerString += "yellow";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
     public void GreenPressed()
     {
         answerString += "green";
         answerAmount++;
+        audioSource.PlayOneShot(button, 0.25f);
     }
 
     private void EnableColorButtons(bool yesOrNo)
@@ -180,6 +185,7 @@ public class Dator2 : MonoBehaviour
             {
                 ChooseRandomColor();
                 colorDisplay.SetActive(true);
+                audioSource.PlayOneShot(colorFlash, 0.25f);
                 yield return new WaitForSeconds(0.3f);
                 colorDisplay.SetActive(false);
                 yield return new WaitForSeconds(0.5f);
@@ -198,10 +204,12 @@ public class Dator2 : MonoBehaviour
             if (answerString == colorString)
             {
                 correctOrWrongImage.sprite = UISprites[10];
+                audioSource.PlayOneShot(colorPick, 0.25f);
             }
             else
             {
                 correctOrWrongImage.sprite = UISprites[11];
+                audioSource.PlayOneShot(wrong, 0.25f);
             }
             correctOrWrong.SetActive(true);
             //play sfx depending on

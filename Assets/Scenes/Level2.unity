@@ -5818,6 +5818,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b13188d5743af1949aab086663832a95, type: 3}
   - {fileID: 21300000, guid: 00a9c77c376d0924ebfa9fdf8f5bed3e, type: 3}
   powerOn: {fileID: 8300000, guid: 6d6c9016193b61944a04364b82ccfcd7, type: 3}
+  colorFlash: {fileID: 8300000, guid: 5631de36b2c4eaa44b727fe33b8dcbf9, type: 3}
+  colorPick: {fileID: 8300000, guid: cb6462a485a96b9409f5464e41afcece, type: 3}
+  wrong: {fileID: 8300000, guid: ac2dd4b45061a7c4fae150ea1627df56, type: 3}
+  button: {fileID: 8300000, guid: b76151eb1afba074d97e53179f295261, type: 3}
   codeInputTxt: {fileID: 995070516}
 --- !u!1 &330080710
 GameObject:
@@ -7739,6 +7743,10 @@ MonoBehaviour:
   button2: {fileID: 746057373}
   button3: {fileID: 1261510022}
   powerOn: {fileID: 8300000, guid: 6d6c9016193b61944a04364b82ccfcd7, type: 3}
+  verify: {fileID: 8300000, guid: b76151eb1afba074d97e53179f295261, type: 3}
+  right: {fileID: 8300000, guid: 6ad7db3aea107cf479bebe6f27386981, type: 3}
+  colorPick: {fileID: 8300000, guid: cb6462a485a96b9409f5464e41afcece, type: 3}
+  wronge: {fileID: 8300000, guid: ac2dd4b45061a7c4fae150ea1627df56, type: 3}
   codeDisplayTxt: {fileID: 4394156}
   pictureText: {fileID: 2086121612}
   correct: {fileID: 21300000, guid: b13188d5743af1949aab086663832a95, type: 3}
