@@ -10,7 +10,7 @@ public class DatorController : MonoBehaviour
 {
     [SerializeField] private GameObject datorTrigger, UISprite, task1, player, UIbutton, redButton, blueButton, greenButton, yellowButton, correctOrWrong, colorDisplay;
     [SerializeField] private Sprite[] UISprites;
-    [SerializeField] private AudioClip powerOn;
+    [SerializeField] private AudioClip powerOn, colorFlash, colorPick, wrong, button;
     private AudioSource audioSource;
     private bool inArea;
     private bool lockedIn = false;
@@ -112,6 +112,7 @@ public class DatorController : MonoBehaviour
     }
     public void StartMinigame()
     {
+        audioSource.PlayOneShot(button, 0.25f);
         StartCoroutine(CaptchaMinigame());
     }
     public void RedPressed()
@@ -177,6 +178,7 @@ public class DatorController : MonoBehaviour
         {
         ChooseRandomColor();
         colorDisplay.SetActive(true);
+        audioSource.PlayOneShot(colorFlash, 0.25f);
         yield return new WaitForSeconds(0.3f);
         colorDisplay.SetActive(false);
         yield return new WaitForSeconds(0.5f);
@@ -195,13 +197,14 @@ public class DatorController : MonoBehaviour
         if (answerString == colorString)
         {
             correctOrWrongImage.sprite = UISprites[10];
+            audioSource.PlayOneShot(colorPick, 0.25f);
         }
         else
         {
             correctOrWrongImage.sprite = UISprites[11];
+            audioSource.PlayOneShot(wrong, 0.25f);
         }
         correctOrWrong.SetActive(true);
-        //play sfx depending on
         yield return new WaitForSeconds(0.3f);
         correctOrWrong.SetActive(false);
         yield return new WaitForSeconds(0.3f);
