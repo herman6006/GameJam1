@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTouching: 0
-  currentColor: {r: 0, g: 0, b: 1, a: 1}
+  currentColor: {r: 0, g: 1, b: 0, a: 1}
 --- !u!212 &5719315774771777193
 SpriteRenderer:
   m_ObjectHideFlags: 0

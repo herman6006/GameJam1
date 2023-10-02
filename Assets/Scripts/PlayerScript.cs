@@ -7,7 +7,7 @@ using TMPro;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private GameObject GameOverScreen, musicPlayer, playArea;
+    [SerializeField] private GameObject GameOverScreen, musicPlayer, playArea, victoryScreen;
     [SerializeField] private TMP_Text deathText;
     private float xvelocity;
     private float yvelocity;
@@ -60,11 +60,15 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spike"))
         {
+            if (victoryScreen.activeSelf == false)
+            {
             deathText.text = "Died to spikes";
             GameOverScreen.SetActive(true);
             StopMovement();
             musicPlayer.GetComponent<MusicScript>().StopMusic();
             playArea.GetComponent<ShrinkLevel>().StopShrink();
+
+            }
 
         }
     }
