@@ -18,13 +18,13 @@ public class ShrinkLevel : MonoBehaviour
     }
     private IEnumerator Shrink()
     {
+        musicPlayer.GetComponent<MusicScript>().StartMusic();
         for (int i = 0; i< 1000 ; i++)
         {
             leftSpikes.transform.position = new Vector3(leftSpikes.transform.position.x + 0.001f, leftSpikes.transform.position.y);
             rightSpikes.transform.position = new Vector3(rightSpikes.transform.position.x - 0.001f, rightSpikes.transform.position.y);
             yield return new WaitForSeconds(0.001f);
         }
-        musicPlayer.GetComponent<MusicScript>().StartMusic();
         for (int i = 0; i < 14; i++)
         {
             yield return new WaitForSeconds(4.5f);
