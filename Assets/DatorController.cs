@@ -70,7 +70,7 @@ public class DatorController : MonoBehaviour
                 {
                     noSpacesCode += Input.inputString;
                     print(noSpacesCode);
-                    if (noSpacesCode == "1337")
+                    if (noSpacesCode == "fusk" || noSpacesCode == task1.GetComponent<Task1Controller>().code.ToString()) 
                     {
                         StartCoroutine(Captcha());
                         canExit = false;
@@ -220,4 +220,3 @@ public class DatorController : MonoBehaviour
         }
     }
 }
-//10 = correct 11 = wrong

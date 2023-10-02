@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BarrelDetonate : MonoBehaviour
@@ -7,6 +8,7 @@ public class BarrelDetonate : MonoBehaviour
     [SerializeField] private GameObject gameOverScreen, player, playArea, musicPlayer;
     [SerializeField] private ParticleSystem posionGas;
     [SerializeField] private AudioClip smokeSFX;
+    [SerializeField] private TMP_Text deathText;
     private AudioSource audioSource;
     private SpriteRenderer sprd;
     private void Start()
@@ -28,6 +30,7 @@ public class BarrelDetonate : MonoBehaviour
 
     private void Gameover()
     {
+        deathText.text = "Died to toxic gas";
         gameOverScreen.SetActive(true);
         playArea.GetComponent<ShrinkLevel>().StopShrink();
         musicPlayer.GetComponent<MusicScript>().StopMusic();

@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private GameObject GameOverScreen, musicPlayer, playArea;
+    [SerializeField] private TMP_Text deathText;
     private float xvelocity;
     private float yvelocity;
     private Animator anim;
@@ -57,6 +60,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Spike"))
         {
+            deathText.text = "Died to spikes";
             GameOverScreen.SetActive(true);
             StopMovement();
             musicPlayer.GetComponent<MusicScript>().StopMusic();
